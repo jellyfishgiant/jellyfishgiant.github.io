@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Mood Board</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        #mood-board {
+            column-count: 1;
+            column-gap: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .mood-image {
+            width: 100%;
+            margin-bottom: 10px;
+            break-inside: avoid;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .mood-image:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+    <div id="mood-board"></div>
+
+    <script>
+        // Function to shuffle array randomly
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // GitHub repository details - REPLACE THESE!
+        const username = 'YOUR_GITHUB_USERNAME';
+        const repo = 'YOUR_REPO_NAME';
+        const branch = 'main';
+        const folder = 'images'; // Folder where you'll upload images
+
+        async function loadImages() {
+            const moodBoard = document.getElementById('mood-board');
+            
+            try {
+                const response = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/${folder}`);
+                const files = await response.json();
+                
+                // Filter only image files
+                const imageFiles = files
+                    .filter(file => 
+                        ['jpg', 'jpeg', 'png', 'gif', 'webp']
+                        .some(ext => file.name.toLowerCase().endsWith(ext))
+                    )
+                    .map(file => file.download_url);
+
+                // Shuffle images
+                const shuffledImages = shuffleArray(imageFiles);
+
+                // Create image elements
+                shuffledImages.forEach(imageUrl => {
+                    const img = document.createElement('img');
+                    img.src = imageUrl;
+                    img.classList.add('mood-image');
+                    img.loading = 'lazy'; // Lazy loading for performance
+                    moodBoard.appendChild(img);
+                });
+
+            } catch (error) {
+                console.error('Error loading images:', error);
+                moodBoard.innerHTML = 'Error loading images. Check GitHub repository settings.';
+            }
+        }
+
+        // Load images when page loads
+        loadImages();
+
+        // Optional: Infinite scroll (loads more images if you add them)
+        window.addEventListener('scroll', () => {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                loadImages();
+            }
+        });
+    </script>
+</body>
+</html>
