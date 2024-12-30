@@ -49,10 +49,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     loadImages();
-
-    window.addEventListener('scroll', () => {
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-            loadImages();
-        }
-    });
 });
