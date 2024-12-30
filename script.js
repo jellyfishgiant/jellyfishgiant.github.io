@@ -3,6 +3,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const repo = 'jellyfishgiant.github.io';
     const folder = 'images'; // Folder where you'll upload images
 
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
     async function loadImages() {
         const moodBoard = document.getElementById('mood-board');
         
@@ -29,6 +36,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 moodBoard.innerHTML = 'No images found in the repository.';
                 return;
             }
+
+            // Shuffle images to display them in random order
+            shuffleArray(imageFiles);
 
             imageFiles.forEach(imageUrl => {
                 console.log("Loading image: ", imageUrl);
