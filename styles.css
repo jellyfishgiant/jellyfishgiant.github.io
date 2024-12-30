@@ -1,0 +1,33 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #013220; /* Dark green background */
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+#mood-board {
+    column-count: 1;
+    column-gap: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.mood-image {
+    width: 100%;
+    margin-bottom: 10px;
+    break-inside: avoid;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.mood-image:hover {
+    transform: scale(1.02);
+}
