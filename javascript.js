@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const moodBoard = document.getElementById('mood-board');
         
         try {
+            console.log(`Fetching images from: https://api.github.com/repos/${username}/${repo}/contents/${folder}`);
             const response = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/${folder}`);
             
             if (!response.ok) {
@@ -14,11 +15,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             const files = await response.json();
+            console.log("Files fetched: ", files);
             
+            // Allow all common image file types
             const imageFiles = files
                 .filter(file => 
-                    ['jpg', 'jpeg', 'png', 'gif', 'webp']
-                    .some(ext => file.name.toLowerCase().endsWith(ext))
+                    ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg']
+                    .some(ext => file.name.toLowerCase().endswith(ext))
                 )
                 .map(file => file.download_url);
 
@@ -28,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             imageFiles.forEach(imageUrl => {
+                console.log("Loading image: ", imageUrl);
                 const img = document.createElement('img');
                 img.src = imageUrl;
                 img.classList.add('mood-image');
