@@ -1,7 +1,7 @@
 body, html {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Courier New', Courier, monospace; /* Changed font to Courier New */
     background-color: #013220; /* Dark green background */
     color: white;
     display: flex;
@@ -12,6 +12,8 @@ body, html {
 header {
     text-align: center;
     padding: 20px;
+    font-family: 'Courier New', Courier, monospace; /* Ensure header font is also Courier New */
+    text-shadow: 1px 1px 1px black; /* 1px black outline on title */
 }
 
 #mood-board-container {
@@ -22,7 +24,7 @@ header {
 
 #mood-board {
     column-count: 1;
-    column-gap: 40px;  /* Increased gap between images */
+    column-gap: 48px;  /* Increased gap between images by 20% (40px to 48px) */
     max-width: 800px;
     width: 100%;
     padding: 20px;
@@ -30,9 +32,9 @@ header {
 
 .mood-image {
     width: 70%; /* 30 percent smaller */
-    margin-bottom: 40px; /* Increased gap between images */
+    margin-bottom: 48px; /* Increased gap between images by 20% (40px to 48px) */
     break-inside: avoid;
-    border: 5px solid black; /* 5px black border */
+    border: 7px solid black; /* 7px black border */
     border-radius: 0; /* Sharp edges */
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
