@@ -13,17 +13,18 @@ header {
 
 #mood-board {
     column-count: 1;
-    column-gap: 10px;
+    column-gap: 20px;  /* Increased gap between images */
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
 }
 
 .mood-image {
-    width: 100%;
-    margin-bottom: 10px;
+    width: 70%; /* 30 percent smaller */
+    margin-bottom: 20px; /* Increased gap between images */
     break-inside: avoid;
-    border-radius: 8px;
+    border: 3px solid black; /* 3px black border */
+    border-radius: 0; /* Sharp edges */
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
 }
