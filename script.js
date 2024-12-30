@@ -59,4 +59,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     loadImages();
+
+    // Add event listener for the refresh button
+    const refreshButton = document.getElementById('refresh-button');
+    refreshButton.addEventListener('click', function() {
+        window.scrollTo(0, 0);
+        location.reload();
+    });
 });
