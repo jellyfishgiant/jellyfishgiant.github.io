@@ -4,6 +4,9 @@ body, html {
     font-family: Arial, sans-serif;
     background-color: #013220; /* Dark green background */
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 header {
@@ -14,13 +17,14 @@ header {
 #mood-board-container {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 #mood-board {
     column-count: 1;
     column-gap: 40px;  /* Increased gap between images */
     max-width: 800px;
-    margin: 0 auto;
+    width: 100%;
     padding: 20px;
 }
 
@@ -32,6 +36,9 @@ header {
     border-radius: 0; /* Sharp edges */
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .mood-image:hover {
