@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const imageFiles = files
                 .filter(file => 
                     ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg']
-                    .some(ext => file.name.toLowerCase().endswith(ext))
+                    .some(ext => file.name.toLowerCase().endsWith(ext))
                 )
                 .map(file => file.download_url);
 
