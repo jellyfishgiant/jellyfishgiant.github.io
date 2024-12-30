@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const moodBoard = document.getElementById('mood-board');
         
         try {
-            console.log(`Fetching images from: https://api.github.com/repos/${username}/${repo}/${folder}`);
-            const response = await fetch(`https://api.github.com/repos/${username}/${repo}/${folder}`);
+            console.log(`Fetching images from: https://api.github.com/repos/${username}/${repo}/contents/${folder}`);
+            const response = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/${folder}`);
             
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
