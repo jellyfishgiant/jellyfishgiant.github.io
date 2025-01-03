@@ -77,6 +77,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     loadImages();
 
+    // Show the footer after a delay
+    setTimeout(() => {
+        document.getElementById('footer').style.display = 'block';
+    }, 3000); // 3 seconds delay
+
     // Add event listener for the refresh button
     const refreshButton = document.getElementById('refresh-button');
     refreshButton.addEventListener('click', function() {
