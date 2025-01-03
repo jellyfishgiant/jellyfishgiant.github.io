@@ -40,16 +40,33 @@ document.addEventListener('DOMContentLoaded', function() {
             // Shuffle images to display them in random order
             shuffleArray(imageFiles);
 
+            // Create image elements but set them to load lazily
             imageFiles.forEach(imageUrl => {
-                console.log("Loading image: ", imageUrl);
+                console.log("Creating image element for: ", imageUrl);
                 const img = document.createElement('img');
-                img.src = imageUrl;
+                img.dataset.src = imageUrl; // Use data-src for lazy loading
                 img.classList.add('mood-image');
-                img.loading = 'lazy';
+                img.loading = 'lazy'; // Native lazy loading
                 img.onerror = function() {
                     console.error('Failed to load image:', imageUrl);
                 };
                 moodBoard.appendChild(img);
+            });
+
+            // Use Intersection Observer to load images when they are in the viewport
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            // Observe all images
+            document.querySelectorAll('.mood-image').forEach(image => {
+                observer.observe(image);
             });
 
         } catch (error) {
