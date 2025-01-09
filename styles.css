@@ -25,13 +25,15 @@ header h1 {
 .subtitle {
     font-family: 'Courier New', Courier, monospace;
     color: white;
-    text-shadow: 2px 2px 0 black, -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black; /* White text with black outline */
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* White text with black border */
     margin-top: 10px;
 }
 
 .subtitle a {
-    color: darkpink;
+    color: lightpink;
     text-decoration: none;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff; /* Light pink text with white border */
+    font-weight: bold; /* Bold text */
 }
 
 .subtitle a:hover {
