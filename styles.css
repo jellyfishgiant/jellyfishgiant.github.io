@@ -34,7 +34,8 @@ header h1 {
     text-decoration: none;
     font-family: Arial, sans-serif; /* Arial font */
     font-weight: bold; /* Bold text */
-    letter-spacing: 0.05em; /* Add slight spacing between letters */
+    font-style: italic; /* Italic text */
+    letter-spacing: 0.1em; /* Add slight spacing between letters */
 }
 
 .subtitle a:hover {
