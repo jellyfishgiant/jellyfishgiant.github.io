@@ -30,9 +30,9 @@ header h1 {
 }
 
 .subtitle a {
-    color: lightpink;
+    color: #c85051; /* Color for PATASONIC */
     text-decoration: none;
-    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff; /* Light pink text with white border */
+    font-family: Arial, sans-serif; /* Arial font */
     font-weight: bold; /* Bold text */
     letter-spacing: 0.05em; /* Add slight spacing between letters */
 }
