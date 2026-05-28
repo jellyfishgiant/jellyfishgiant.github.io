@@ -59,15 +59,23 @@
             {% else %}
             <a href="/blog/" class="nav-link">BLOG</a>
             {% endif %}
+            <span class="nav-divider">/</span>
+            {% if page.page_id == 'info' %}
+            <a href="/info/" class="nav-link active">INFO</a>
+            {% else %}
+            <a href="/info/" class="nav-link">INFO</a>
+            {% endif %}
         </nav>
     </header>
 
     {{ content }}
 
+    {% if page.show_footer %}
     <footer id="footer" style="display: none;">
-        <p>Website Design Copyright PATASONIC Laboratories 2025</p>
+        <p>Website Design Copyright PATASONIC Laboratories 2026</p>
         <button id="refresh-button">Waste more of your life?</button>
     </footer>
+    {% endif %}
 
     <script src="/script.js" defer></script>
 </body>

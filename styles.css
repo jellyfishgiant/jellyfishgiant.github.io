@@ -284,3 +284,46 @@ nav {
     opacity: 1;
     color: #c85051;
 }
+
+/* ── Info page ───────────────────────────────────────────── */
+
+#info-container {
+    max-width: 600px;
+    width: 100%;
+    padding: 40px 20px 80px;
+    margin: 0 auto;
+}
+
+.info-block {
+    margin-bottom: 40px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-block:last-child {
+    border-bottom: none;
+}
+
+.info-block p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95em;
+    line-height: 1.8;
+    margin: 0 0 8px;
+}
+
+.info-label {
+    letter-spacing: 0.25em;
+    opacity: 0.45;
+    font-size: 0.75em !important;
+    margin-bottom: 12px !important;
+}
+
+.info-block a {
+    color: #c85051;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.info-block a:hover {
+    text-decoration: underline;
+}
