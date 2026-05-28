@@ -426,3 +426,25 @@ body.page-home h1 {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     display: block;
 }
+
+/* ── Post category tags ──────────────────────────────────── */
+
+.post-cat {
+    display: inline-block;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.65em;
+    letter-spacing: 0.25em;
+    margin-bottom: 8px;
+    padding: 2px 6px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.post-cat-story {
+    color: #c85051;
+    border-color: rgba(200, 80, 81, 0.35);
+}
+
+.post-cat-thought {
+    color: rgba(255,255,255,0.5);
+    border-color: rgba(255,255,255,0.2);
+}

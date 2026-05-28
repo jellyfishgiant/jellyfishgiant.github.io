@@ -12,6 +12,9 @@ subtitle_prefix: "writing by"
     {% for post in site.posts %}
     <article class="post-preview">
         <a href="{{ post.url }}" class="post-preview-link">
+            {% if post.category %}
+            <span class="post-cat post-cat-{{ post.category }}">{{ post.category | upcase }}</span>
+            {% endif %}
             <h2 class="post-preview-title">{{ post.title }}</h2>
             <p class="post-preview-date">{{ post.date | date: "%B %d, %Y" }}</p>
             {% if post.excerpt %}
