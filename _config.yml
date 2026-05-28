@@ -1,0 +1,14 @@
+title: the rockshow
+description: curated by PATASONIC
+url: "https://patasonic.com"
+baseurl: ""
+permalink: /blog/:title/
+markdown: kramdown
+kramdown:
+  input: GFM
+# Exclude heavy image folders — images are served via GitHub raw CDN,
+# not from the Jekyll build, so excluding them is safe and prevents build timeouts.
+exclude:
+  - images/
+  - photos/
+  - README.md

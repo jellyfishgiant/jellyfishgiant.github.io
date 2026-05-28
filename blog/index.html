@@ -1,0 +1,24 @@
+---
+layout: default
+title: Blog — the rockshow
+page_id: blog
+page_title: BLOG
+subtitle_prefix: "writing by"
+---
+<div id="blog-container">
+    {% if site.posts.size == 0 %}
+    <p class="empty-state">No posts yet. Check back soon.</p>
+    {% else %}
+    {% for post in site.posts %}
+    <article class="post-preview">
+        <a href="{{ post.url }}" class="post-preview-link">
+            <h2 class="post-preview-title">{{ post.title }}</h2>
+            <p class="post-preview-date">{{ post.date | date: "%B %d, %Y" }}</p>
+            {% if post.excerpt %}
+            <p class="post-preview-excerpt">{{ post.excerpt | strip_html | truncate: 220 }}</p>
+            {% endif %}
+        </a>
+    </article>
+    {% endfor %}
+    {% endif %}
+</div>

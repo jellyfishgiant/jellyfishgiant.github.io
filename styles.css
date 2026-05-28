@@ -98,3 +98,189 @@ footer p {
 #refresh-button:hover {
     background: linear-gradient(to right, orange, yellow); /* Reverse gradient on hover */
 }
+
+/* ── Navigation ─────────────────────────────────────────── */
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 14px 0 4px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8em;
+    letter-spacing: 0.28em;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    opacity: 0.55;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+    opacity: 1;
+    color: #c85051;
+}
+
+.nav-link.active {
+    color: #c85051;
+    opacity: 1;
+}
+
+.nav-divider {
+    color: white;
+    opacity: 0.25;
+}
+
+/* ── Empty state ─────────────────────────────────────────── */
+
+.empty-state {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    opacity: 0.45;
+    letter-spacing: 0.18em;
+    margin-top: 80px;
+    font-size: 0.9em;
+}
+
+/* ── Blog listing ────────────────────────────────────────── */
+
+#blog-container {
+    max-width: 700px;
+    width: 100%;
+    padding: 30px 20px 60px;
+    margin: 0 auto;
+}
+
+.post-preview {
+    margin-bottom: 44px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.post-preview:last-child {
+    border-bottom: none;
+}
+
+.post-preview-link {
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+.post-preview-title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.3em;
+    letter-spacing: 0.22em;
+    margin: 0 0 8px;
+    transition: color 0.2s;
+}
+
+.post-preview-link:hover .post-preview-title {
+    color: #c85051;
+}
+
+.post-preview-date {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75em;
+    opacity: 0.45;
+    letter-spacing: 0.12em;
+    margin: 0 0 12px;
+}
+
+.post-preview-excerpt {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.88em;
+    line-height: 1.7;
+    opacity: 0.75;
+    margin: 0;
+}
+
+/* ── Blog post article ───────────────────────────────────── */
+
+.post-article {
+    max-width: 680px;
+    width: 100%;
+    padding: 30px 30px 80px;
+    margin: 0 auto;
+}
+
+.post-header {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.post-title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.7em;
+    letter-spacing: 0.25em;
+    margin: 0 0 10px;
+}
+
+.post-date {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75em;
+    opacity: 0.45;
+    letter-spacing: 0.12em;
+    margin: 0;
+}
+
+.post-content {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95em;
+    line-height: 1.85;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3 {
+    letter-spacing: 0.2em;
+    margin-top: 2.2em;
+}
+
+.post-content p {
+    margin-bottom: 1.5em;
+}
+
+.post-content a {
+    color: #c85051;
+    text-decoration: underline;
+}
+
+.post-content img {
+    max-width: 100%;
+    border: 7px solid black;
+    display: block;
+    margin: 30px auto;
+}
+
+.post-content blockquote {
+    border-left: 3px solid #c85051;
+    margin-left: 0;
+    padding-left: 20px;
+    opacity: 0.8;
+}
+
+.post-back {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.back-link {
+    color: white;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.82em;
+    letter-spacing: 0.18em;
+    opacity: 0.5;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+.back-link:hover {
+    opacity: 1;
+    color: #c85051;
+}

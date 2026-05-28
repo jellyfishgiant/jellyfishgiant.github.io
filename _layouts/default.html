@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page.title | default: "the rockshow" }}</title>
+    <link rel="stylesheet" href="/styles.css">
+
+    <!-- Favicon Links -->
+    <link rel="icon" type="image/png" href="/favicon.ico/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico/apple-touch-icon.png" />
+    <link rel="manifest" href="/favicon.ico/site.webmanifest" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{{ page.title | default: 'the rockshow' }}">
+    <meta property="og:description" content="curated selection of images and ideas by PATASONIC">
+    <meta property="og:image" content="https://github.com/jellyfishgiant/jellyfishgiant.github.io/raw/main/images/pinterest_978618194012580288.jpg">
+    <meta property="og:url" content="https://patasonic.com{{ page.url }}">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page.title | default: 'the rockshow' }}">
+    <meta name="twitter:description" content="curated selection of images and ideas by PATASONIC">
+    <meta name="twitter:image" content="https://github.com/jellyfishgiant/jellyfishgiant.github.io/raw/main/images/pinterest_978618194012580288.jpg">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+<body>
+    <header>
+        <h1>{{ page.page_title | default: "THE ROCKSHOW" }}</h1>
+        <p class="subtitle">
+            {{ page.subtitle_prefix | default: "a collection of images curated by" }}
+            <a href="https://www.youtube.com/@PATASONIC" target="_blank"><strong><i>PATASONIC</i></strong></a>
+        </p>
+        <nav>
+            {% if page.page_id == 'home' %}
+            <a href="/" class="nav-link active">HOME</a>
+            {% else %}
+            <a href="/" class="nav-link">HOME</a>
+            {% endif %}
+            <span class="nav-divider">/</span>
+            {% if page.page_id == 'moodboard' %}
+            <a href="/moodboard/" class="nav-link active">MOOD BOARD</a>
+            {% else %}
+            <a href="/moodboard/" class="nav-link">MOOD BOARD</a>
+            {% endif %}
+            <span class="nav-divider">/</span>
+            {% if page.page_id == 'blog' %}
+            <a href="/blog/" class="nav-link active">BLOG</a>
+            {% else %}
+            <a href="/blog/" class="nav-link">BLOG</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    {{ content }}
+
+    <footer id="footer" style="display: none;">
+        <p>Website Design Copyright PATASONIC Laboratories 2025</p>
+        <button id="refresh-button">Waste more of your life?</button>
+    </footer>
+
+    <script src="/script.js" defer></script>
+</body>
+</html>
