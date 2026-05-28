@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const username = 'jellyfishgiant';
-    const repo = 'jellyfishgiant.github.io';
+    const repo    = 'jellyfishgiant.github.io';
+    const branch  = 'main';
+    const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg'];
 
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -9,45 +11,72 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Returns the git tree SHA for a folder path (e.g. "images" or "images/blog")
+    async function getFolderSha(folderPath) {
+        const res = await fetch(
+            `https://api.github.com/repos/${username}/${repo}/git/trees/${branch}`
+        );
+        if (!res.ok) throw new Error(`Root tree fetch failed: ${res.status}`);
+        const data = await res.json();
+
+        const parts = folderPath.split('/');
+        let tree = data.tree;
+        let sha  = null;
+
+        for (let i = 0; i < parts.length; i++) {
+            const entry = tree.find(item => item.path === parts[i] && item.type === 'tree');
+            if (!entry) throw new Error(`Folder "${parts[i]}" not found in repo`);
+            sha = entry.sha;
+
+            // If there are more levels, fetch the next subtree
+            if (i < parts.length - 1) {
+                const subRes = await fetch(
+                    `https://api.github.com/repos/${username}/${repo}/git/trees/${sha}`
+                );
+                if (!subRes.ok) throw new Error(`Subtree fetch failed: ${subRes.status}`);
+                const subData = await subRes.json();
+                tree = subData.tree;
+            }
+        }
+        return sha;
+    }
+
     async function loadImages(folder, shouldShuffle) {
         const moodBoard = document.getElementById('mood-board');
         if (!moodBoard) return;
 
         try {
-            const response = await fetch(
-                `https://api.github.com/repos/${username}/${repo}/contents/${folder}`
+            // Get the SHA for the target folder, then list its tree
+            const folderSha = await getFolderSha(folder);
+
+            const res = await fetch(
+                `https://api.github.com/repos/${username}/${repo}/git/trees/${folderSha}`
             );
+            if (!res.ok) throw new Error(`Folder tree fetch failed: ${res.status}`);
+            const data = await res.json();
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const files = await response.json();
-
-            let imageFiles = files
-                .filter(file =>
-                    ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg']
-                    .some(ext => file.name.toLowerCase().endsWith(ext))
+            let imageFiles = (data.tree || [])
+                .filter(item =>
+                    item.type === 'blob' &&
+                    imageExtensions.some(ext => item.path.toLowerCase().endsWith(`.${ext}`))
                 )
-                .map(file => file.download_url);
+                .map(item =>
+                    `https://raw.githubusercontent.com/${username}/${repo}/${branch}/${folder}/${item.path}`
+                );
 
             if (imageFiles.length === 0) {
                 moodBoard.innerHTML = '<p class="empty-state">Nothing here yet.</p>';
                 return;
             }
 
-            if (shouldShuffle) {
-                shuffleArray(imageFiles);
-            }
+            if (shouldShuffle) shuffleArray(imageFiles);
 
             imageFiles.forEach(imageUrl => {
                 const img = document.createElement('img');
                 img.dataset.src = imageUrl;
                 img.classList.add('mood-image');
                 img.loading = 'lazy';
-                img.onerror = function() {
-                    this.style.display = 'none';
-                };
+                img.onerror = function() { this.style.display = 'none'; };
                 moodBoard.appendChild(img);
             });
 
@@ -65,28 +94,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
         } catch (error) {
             console.error('Error loading images:', error);
-            const moodBoard = document.getElementById('mood-board');
-            if (moodBoard) {
-                moodBoard.innerHTML = `<p class="empty-state">Error loading images.</p>`;
-            }
+            const mb = document.getElementById('mood-board');
+            if (mb) mb.innerHTML = '<p class="empty-state">Error loading images.</p>';
         }
     }
 
-    // Read folder and shuffle preference from the container's data attributes
     const container = document.getElementById('mood-board-container');
     if (container) {
-        const folder = container.dataset.folder || 'images';
+        const folder      = container.dataset.folder || 'images';
         const shouldShuffle = container.dataset.shuffle !== 'false';
         loadImages(folder, shouldShuffle);
 
-        // Show footer after a short delay
         setTimeout(() => {
             const footer = document.getElementById('footer');
             if (footer) footer.style.display = 'block';
         }, 3000);
     }
 
-    // Refresh button
     const refreshButton = document.getElementById('refresh-button');
     if (refreshButton) {
         refreshButton.addEventListener('click', function() {

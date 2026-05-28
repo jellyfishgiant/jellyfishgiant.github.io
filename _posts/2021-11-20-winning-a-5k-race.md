@@ -13,8 +13,8 @@ So we jammed down to the Bay and crashed at Jett and Brandon's house in Daly Cit
 
 The next morning, we're at the SF Zoo. This year's venue.
 
-<!-- ADD IMAGE: upload winner.jpg to /images/blog/ -->
-![Got the gold](/images/blog/winner.jpg)
+<!-- ADD IMAGE: upload winner.jpg to /images/blog/ in your repo -->
+![Got the gold](https://raw.githubusercontent.com/jellyfishgiant/jellyfishgiant.github.io/main/images/blog/winner.jpg)
 
 I was positioned in the middle, in a flash, the race started and I took off. I side-stepped hordes of joggers before I found myself near the front pack. My start was speedy but I was surprised at my standing. The room between the frontrunners and myself thinned and I realized I actually had a good shot to place.
 
@@ -28,7 +28,7 @@ It was a race won through strategy with a slight amount of athleticism.
 
 I collected my plaque and went to check out the giraffes.
 
-<!-- ADD IMAGE: upload cheers.jpg to /images/blog/ -->
-![](/images/blog/cheers.jpg)
+<!-- ADD IMAGE: upload cheers.jpg to /images/blog/ in your repo -->
+![](https://raw.githubusercontent.com/jellyfishgiant/jellyfishgiant.github.io/main/images/blog/cheers.jpg)
 
 For years following this race, I still have received letters in the mail from St. Jude's, almost weekly, begging for donations.

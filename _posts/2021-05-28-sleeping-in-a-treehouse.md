@@ -5,8 +5,8 @@ date: 2021-05-28
 category: story
 ---
 
-<!-- ADD IMAGE: upload river.jpg to /images/blog/ -->
-![River in New Zealand](/images/blog/river.jpg)
+<!-- ADD IMAGE: upload river.jpg to /images/blog/ in your repo -->
+![River in New Zealand](https://raw.githubusercontent.com/jellyfishgiant/jellyfishgiant.github.io/main/images/blog/river.jpg)
 
 It was so high up that you'd have to snap your head as far back as it could go just to gaze up at the treehouse.
 
@@ -20,8 +20,8 @@ I tried first. It was a strenuous climb on branches that were beginning to wear 
 
 On it, there was a bench, coffee table, and other janky pieces. A swing swung right over the entire 80 foot drop. Every inch of the place was marked with doodles and quotes.
 
-<!-- ADD IMAGE: upload platform.jpg to /images/blog/ -->
-![In the platform](/images/blog/platform.jpg)
+<!-- ADD IMAGE: upload platform.jpg to /images/blog/ in your repo -->
+![In the platform](https://raw.githubusercontent.com/jellyfishgiant/jellyfishgiant.github.io/main/images/blog/platform.jpg)
 
 I made use of a pulley and yanked our bags up.
 
