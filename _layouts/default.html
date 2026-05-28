@@ -14,7 +14,7 @@
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="{{ page.title | default: 'the rockshow' }}">
-    <meta property="og:description" content="curated selection of images and ideas by PATASONIC">
+    <meta property="og:description" content="photographs and things by Pat Moran">
     <meta property="og:image" content="https://github.com/jellyfishgiant/jellyfishgiant.github.io/raw/main/images/pinterest_978618194012580288.jpg">
     <meta property="og:url" content="https://patasonic.com{{ page.url }}">
     <meta property="og:type" content="website">
@@ -22,7 +22,7 @@
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ page.title | default: 'the rockshow' }}">
-    <meta name="twitter:description" content="curated selection of images and ideas by PATASONIC">
+    <meta name="twitter:description" content="photographs and things by Pat Moran">
     <meta name="twitter:image" content="https://github.com/jellyfishgiant/jellyfishgiant.github.io/raw/main/images/pinterest_978618194012580288.jpg">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -34,12 +34,11 @@
       gtag('config', 'G-XXXXXXXXXX');
     </script>
 </head>
-<body>
+<body class="page-{{ page.page_id }}">
     <header>
         <h1>{{ page.page_title | default: "THE ROCKSHOW" }}</h1>
         <p class="subtitle">
-            {{ page.subtitle_prefix | default: "a collection of images curated by" }}
-            <a href="https://www.youtube.com/@PATASONIC" target="_blank"><strong><i>PATASONIC</i></strong></a>
+            {{ page.subtitle_prefix | default: "a collection of images curated by" }} Pat
         </p>
         <nav>
             {% if page.page_id == 'home' %}
@@ -72,7 +71,7 @@
 
     {% if page.show_footer %}
     <footer id="footer" style="display: none;">
-        <p>Website Design Copyright PATASONIC Laboratories 2026</p>
+        <p>Website Design Copyright Pat Moran 2026</p>
         <button id="refresh-button">Waste more of your life?</button>
     </footer>
     {% endif %}

@@ -327,3 +327,13 @@ nav {
 .info-block a:hover {
     text-decoration: underline;
 }
+
+/* ── PAT MORAN home page title ───────────────────────────── */
+
+body.page-home h1 {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    color: #c85051;
+    letter-spacing: 0.1em;
+}
