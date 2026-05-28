@@ -336,4 +336,92 @@ body.page-home h1 {
     font-style: italic;
     color: #c85051;
     letter-spacing: 0.1em;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 3px 6px rgba(0,0,0,0.6);
+}
+
+/* ── Mobile ──────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 16px 16px 8px;
+    }
+
+    /* Scale h1 down so wide titles don't overflow narrow screens */
+    header h1 {
+        font-size: 2em;
+        letter-spacing: 0.12em;
+        margin: 0 0 6px;
+    }
+
+    /* PAT MORAN — italic Arial runs wider so tighten spacing further */
+    body.page-home h1 {
+        font-size: 2em;
+        letter-spacing: 0.07em;
+    }
+
+    .subtitle {
+        font-size: 0.82em;
+    }
+
+    /* Tighten nav so 4 links fit comfortably on one line */
+    nav {
+        font-size: 0.68em;
+        letter-spacing: 0.1em;
+        gap: 5px;
+        margin: 10px 0 2px;
+        flex-wrap: wrap;
+        row-gap: 5px;
+    }
+
+    /* Images: bigger on mobile — more of the screen */
+    .mood-image {
+        width: 90%;
+        margin-bottom: 28px;
+    }
+
+    #mood-board {
+        padding: 10px;
+    }
+
+    /* Blog listing */
+    #blog-container {
+        padding: 20px 16px 40px;
+    }
+
+    .post-preview-title {
+        font-size: 1.1em;
+        letter-spacing: 0.14em;
+    }
+
+    /* Blog post article */
+    .post-article {
+        padding: 20px 16px 50px;
+    }
+
+    .post-title {
+        font-size: 1.35em;
+        letter-spacing: 0.14em;
+    }
+
+    /* Info page */
+    #info-container {
+        padding: 24px 16px 50px;
+    }
+}
+
+/* ── Info profile image ──────────────────────────────────── */
+
+.info-profile {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 20px;
+}
+
+.profile-image {
+    width: 260px;
+    max-width: 80%;
+    border: 7px solid black;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: block;
 }
