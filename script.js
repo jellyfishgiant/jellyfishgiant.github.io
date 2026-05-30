@@ -55,20 +55,27 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!res.ok) throw new Error(`Folder tree fetch failed: ${res.status}`);
             const data = await res.json();
 
-            let imageFiles = (data.tree || [])
+            let items = (data.tree || [])
                 .filter(item =>
                     item.type === 'blob' &&
                     imageExtensions.some(ext => item.path.toLowerCase().endsWith(`.${ext}`))
-                )
-                .map(item =>
-                    `https://raw.githubusercontent.com/${username}/${repo}/${branch}/${folder}/${item.path}`
                 );
+
+            // Always sort by filename first for a predictable base order.
+            // This is what the home page uses (data-shuffle="false") — name files
+            // 01-, 02-, 03- etc. to control the display order.
+            items.sort((a, b) => a.path.localeCompare(b.path, undefined, { numeric: true }));
+
+            let imageFiles = items.map(item =>
+                `https://raw.githubusercontent.com/${username}/${repo}/${branch}/${folder}/${item.path}`
+            );
 
             if (imageFiles.length === 0) {
                 moodBoard.innerHTML = '<p class="empty-state">Nothing here yet.</p>';
                 return;
             }
 
+            // Mood board reshuffles every visit; home page stays in sorted order.
             if (shouldShuffle) shuffleArray(imageFiles);
 
             imageFiles.forEach(imageUrl => {
@@ -117,5 +124,27 @@ document.addEventListener('DOMContentLoaded', function() {
             window.scrollTo(0, 0);
             location.reload();
         });
+    }
+
+    // ── Blog scroll restoration ──────────────────────────────
+    // When someone reads a post and clicks "all posts", if they originally
+    // came from the blog listing, navigate back through history instead of
+    // doing a fresh load. The browser then restores their scroll position.
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'auto';
+    }
+
+    const backLinks = document.querySelectorAll('.back-link');
+    if (backLinks.length) {
+        const ref = document.referrer;
+        const cameFromBlogList = ref.endsWith('/blog/') || ref.endsWith('/blog');
+        if (cameFromBlogList) {
+            backLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    history.back();
+                });
+            });
+        }
     }
 });
