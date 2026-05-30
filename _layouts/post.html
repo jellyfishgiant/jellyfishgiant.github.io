@@ -1,21 +1,15 @@
 ---
 layout: default
 ---
-<div class="post-wrap">
-    <a href="/blog/" class="post-back-top">&larr; back</a>
-    <article class="post-card">
-        <header class="post-card-header">
-            {% if page.category %}
-            <span class="post-cat post-cat-{{ page.category }}">{{ page.category | upcase }}</span>
-            {% endif %}
-            <h2 class="post-title">{{ page.title }}</h2>
-            <p class="post-date">{{ page.date | date: "%B %d, %Y" }}</p>
-        </header>
-        <div class="post-content">
-            {{ content }}
-        </div>
-        <footer class="post-card-footer">
-            <a href="/blog/" class="back-link">&larr; all posts</a>
-        </footer>
-    </article>
-</div>
+<article class="post-article">
+    <div class="post-header">
+        <h2 class="post-title">{{ page.title }}</h2>
+        <p class="post-date">{{ page.date | date: "%B %d, %Y" }}</p>
+    </div>
+    <div class="post-content">
+        {{ content }}
+    </div>
+    <div class="post-back">
+        <a href="/blog/" class="back-link">&larr; all posts</a>
+    </div>
+</article>
